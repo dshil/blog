@@ -263,7 +263,7 @@ The cost of system call is important, but it's not a key problem here.
 First, let's look at the diagram below to figure out what is performed
 underneath. As you remember XNU is all about IPC.
 
-![host_get_clock_service](/blog/missed-osx-clock-guide/host_get_clock_service.png)
+![host_get_clock_service](/blog/missed-os-x-clock-guide/host_get_clock_service.png)
 
 To deal with a clock service you need:
 
@@ -275,14 +275,14 @@ To deal with a clock service you need:
 Kernel allocates a clock_port for us, using which we'll obtain a required
 current time.
 
-![clock_get_time](/blog/missed-osx-clock-guide/clock_get_time.png)
+![clock_get_time](/blog/missed-os-x-clock-guide/clock_get_time.png)
 
    - Put a port (clock_port), where to send the result, in a message.
    - Send the message to the specified port (clock_service).
    - The message will be put in the port queue.
    - Receive current time.
 
-![mach_port_deallocate](/blog/missed-osx-clock-guide/mach_port_deallocate.png)
+![mach_port_deallocate](/blog/missed-os-x-clock-guide/mach_port_deallocate.png)
 
 When we don't need this port we should deallocate it to avoid a [port leak
 problem](https://robert.sesek.com/2012/1/debugging_mach_ports.htm://robert.sesek.com/2012/1/debugging_mach_ports.html).
