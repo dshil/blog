@@ -1,5 +1,5 @@
 ---
-title: "Missed OSX Clocks Guide"
+title: "Missed OS X Clock Guide"
 date: 2017-11-26T08:03:19+03:00
 draft: false
 ---
@@ -34,10 +34,12 @@ This fight was begun when I tried to make time-related operations portable in
 **Thanks**
 
 I would like to thank my friends and colleagues:
-   - [Victor Gaydov](https://gavv.github.io/about/) [and his project](https://github.com/roc-project/roc),
+
+   - [Victor Gaydov](https://gavv.github.io/about/) and [his project](https://github.com/roc-project/roc),
      that was a reason why this article has appeared and for dozen helpful
      advices how to improve this article.
-   - Eugene Golishev for advices how to improve readability.
+   - [Eugene Golishev](https://github.com/eugulixes) for advices how to improve
+     readability.
 
 ## Linux
 
@@ -89,77 +91,76 @@ There are 3 ways to work with time in OSX:
 
 **API based on mach_timespec_t**
 
-By exploring [man pages in XNU repository](https://github.com/opensource-apple/xnu/tree/10.12/osfmk/man), we can figure out, that Mach API has something called clock_service.
+By exploring [man pages in XNU repository](https://github.com/apple/darwin-xnu/tree/master/osfmk/man), we can figure out, that Mach API has something called clock_service.
 
 
 Let's explore what we can do with it:
 
 ```c
+#include <mach/mach.h>      /* host_get_clock_service */
+#include <mach/clock.h>     /* clock_get_time */
+#include <mach/mach_error.h> /* error handling */
 
-    #include <mach/mach.h>      /* host_get_clock_service */
-    #include <mach/clock.h>     /* clock_get_time */
-    #include <mach/mach_error.h> /* error handling */
+kern_return_t err = KERN_SUCCESS;
+clock_serv_t host_clock;
 
-    kern_return_t err = KERN_SUCCESS;
-    clock_serv_t host_clock;
+// mach/clock_types.h
+//
+// kern_return_t
+// host_get_clock_service(
+//     host_t			host,
+//     clock_id_t		clock_id,
+//     clock_t			*clock)
+//
+// Reserved clock id values for default clocks.
+//
+// #define SYSTEM_CLOCK	    	0
+// #define CALENDAR_CLOCK		1
+// #define REALTIME_CLOCK		0
+//
+// Where `clock_id` is the identification of the desired kernel clock with
+// possible values:
+//
+//    - REALTIME_CLOCK stands for a time since a boot time. It has the same
+//      semantic as CLOCK_MONOTONIC.
+//
+//    - BATTERY_CLOCK - (typically) low resolution clock that survives
+//      power failures or service outages.
+//
+//    - HIGHRES_CLOCK - a high resolution clock.
+//
+// This function returns a send right to a kernel clock's service port.
+err = host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &host_clock);
+if (err != KERN_SUCCESS) {
+    mach_error("host_get_clock_service: ", err);
+    exit(EXIT_FAILURE);
+}
 
-    // mach/clock_types.h
-    //
-    // kern_return_t
-    // host_get_clock_service(
-    //     host_t			host,
-    //     clock_id_t		clock_id,
-    //     clock_t			*clock)
-    //
-    // Reserved clock id values for default clocks.
-    //
-    // #define SYSTEM_CLOCK	    	0
-    // #define CALENDAR_CLOCK		1
-    // #define REALTIME_CLOCK		0
-    //
-    // Where `clock_id` is the identification of the desired kernel clock with
-    // possible values:
-    //
-    //    - REALTIME_CLOCK stands for a time since a boot time. It has the same
-    //      semantic as CLOCK_MONOTONIC.
-    //
-    //    - BATTERY_CLOCK - (typically) low resolution clock that survives
-    //      power failures or service outages.
-    //
-    //    - HIGHRES_CLOCK - a high resolution clock.
-    //
-    // This function returns a send right to a kernel clock's service port.
-    err = host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &host_clock);
-    if (err != KERN_SUCCESS) {
-        mach_error("host_get_clock_service: ", err);
-        exit(EXIT_FAILURE);
-    }
+// struct mach_timespec {
+//    unsigned int  tv_sec;         /* seconds */
+//    clock_res_t   tv_nsec;    /* nanoseconds */
+// };
+// typedef struct mach_timespec mach_timespec_t;
+//
+// As you can see, mach_timespec_t is the same as timespec in Linux.
+mach_timespec_t now;
 
-    // struct mach_timespec {
-    //    unsigned int  tv_sec;         /* seconds */
-    //    clock_res_t   tv_nsec;    /* nanoseconds */
-    // };
-    // typedef struct mach_timespec mach_timespec_t;
-    //
-    // As you can see, mach_timespec_t is the same as timespec in Linux.
-    mach_timespec_t now;
+err = clock_get_time(host_clock, &now);
+if (err != KERN_SUCCESS) {
+    mach_error("clock_get_time: ", err);
+    exit(EXIT_FAILURE);
+}
 
-    err = clock_get_time(host_clock, &now);
-    if (err != KERN_SUCCESS) {
-        mach_error("clock_get_time: ", err);
-        exit(EXIT_FAILURE);
-    }
-
-    // We should deallocate the port returned by host_get_clock_service,
-    // because we no longer need it.
-    //
-    // You should be careful with mach ports allocation and deallocation,
-    // because it is usually can cause the ports leak problem.
-    err = mach_port_deallocate(mach_task_self(), host_clock);
-    if (err != KERN_SUCCESS) {
-        mach_error("mach_port_deallocate: ", err);
-        exit(EXIT_FAILURE);
-    }
+// We should deallocate the port returned by host_get_clock_service,
+// because we no longer need it.
+//
+// You should be careful with mach ports allocation and deallocation,
+// because it is usually can cause the ports leak problem.
+err = mach_port_deallocate(mach_task_self(), host_clock);
+if (err != KERN_SUCCESS) {
+    mach_error("mach_port_deallocate: ", err);
+    exit(EXIT_FAILURE);
+}
 ```
 
 Mach API also provides a system call similar to `clock_nanosleep`. It is called
@@ -196,27 +197,27 @@ Example of receiving current time in nanoseconds using `mach_absolute_time`:
 
 ```c
 
-    #include <mach/mach_time.h> /* mach_absolute_time */
+#include <mach/mach_time.h> /* mach_absolute_time */
 
-    mach_timebase_info_data_t info;
+mach_timebase_info_data_t info;
 
-    kern_return_t ret = mach_timebase_info(&info);
-    if (ret != KERN_SUCCESS) {
-        // Some kind of disaster...
-    }
+kern_return_t ret = mach_timebase_info(&info);
+if (ret != KERN_SUCCESS) {
+    // Some kind of disaster...
+}
 
-    // You should cache this value to avoid calculating it each time.
-    double steady_factor = (double) info.numer / info.denom;
+// You should cache this value to avoid calculating it each time.
+double steady_factor = (double) info.numer / info.denom;
 
-    uint64_t now_ns = mach_absolute_time() * steady_factor;
+uint64_t now_ns = mach_absolute_time() * steady_factor;
 ```
 
 ## Difference between various Mach Clock APIs
 
 Let's try to receive current time using both APIs:
 
-    - API based on `mach_timespec_t`: 556680752418861 ns
-    - API based on `mach_absolute_time`: 55668752378055 ns
+   - `mach_timespec_t`: 556680752418861 ns
+   - `mach_absolute_time`: 55668752378055 ns
 
 Both values belongs to the same time domain.
 
@@ -226,7 +227,7 @@ Both values belongs to the same time domain.
   You can review [source](https://opensource.apple.com/source/Libc/Libc-320.1.3/i386/mach/mach_absolute_time.c)
   for more details.
 
-* API based on `mach_timespec_t` uses.
+* API based on `mach_timespec_t` uses RDTSC through Mach ports.
 
 ## Deprecated Mach Clock API
 
@@ -239,30 +240,30 @@ current time you need 3 system calls:
 
 `host_get_clock_service` and `mach_port_deallocate` usually will be called only
 once. We need to value the cost of `clock_get_time`.
-Using [Benchmarks for time-related operations for OS X and Linux](https://github.com/dshil/playground/tree/master/bench). we can see the difference.
+Using [Benchmarks for time-related operations for OS X and Linux](https://github.com/dshil/playground/tree/master/bench) we can see the difference.
 
 `mach_absolute_time`:
 
-   | function name      | number of calls | avg (ns/call) |
-   |--------------------|-----------------|---------------|
-   | mach_absolute_time | 1000            | 35            |
-   | mach_absolute_time | 1000000         | 36            |
-   | mach_absolute_time | 5000000         | 37            |
+| function name      | number of calls | avg (ns/call) |
+|--------------------|-----------------|---------------|
+| mach_absolute_time | 1000            | 35            |
+| mach_absolute_time | 1000000         | 36            |
+| mach_absolute_time | 5000000         | 37            |
 
 `clock_get_time`:
 
-   | function name  | number of calls | avg (ns/call) |
-   |----------------|-----------------|---------------|
-   | clock_get_time | 1000            | 839           |
-   | clock_get_time | 1000000         | 832           |
-   | clock_get_time | 5000000         | 813           |
+| function name  | number of calls | avg (ns/call) |
+|----------------|-----------------|---------------|
+| clock_get_time | 1000            | 839           |
+| clock_get_time | 1000000         | 832           |
+| clock_get_time | 5000000         | 813           |
 
 The cost of system call is important, but it's not a key problem here.
 
 First, let's look at the diagram below to figure out what is performed
 underneath. As you remember XNU is all about IPC.
 
-![host_get_clock_service](host_get_clock_service.png)
+![host_get_clock_service](/blog/missed-osx-clock-guide/host_get_clock_service.png)
 
 To deal with a clock service you need:
 
@@ -274,14 +275,14 @@ To deal with a clock service you need:
 Kernel allocates a clock_port for us, using which we'll obtain a required
 current time.
 
-![clock_get_time](clock_get_time.png)
+![clock_get_time](/blog/missed-osx-clock-guide/clock_get_time.png)
 
    - Put a port (clock_port), where to send the result, in a message.
    - Send the message to the specified port (clock_service).
    - The message will be put in the port queue.
    - Receive current time.
 
-![mach_port_deallocate](mach_port_deallocate.png)
+![mach_port_deallocate](/blog/missed-osx-clock-guide/mach_port_deallocate.png)
 
 When we don't need this port we should deallocate it to avoid a [port leak
 problem](https://robert.sesek.com/2012/1/debugging_mach_ports.htm://robert.sesek.com/2012/1/debugging_mach_ports.html).
@@ -296,7 +297,7 @@ our "high precision time management" will lose a precision.
 
    - [Monotonic time in Mac OS X](http://web.archive.org/web/20100517095152/http://www.wand.net.nz/~smr26/wordpress/2009/01/19/monotonic-time-in-mac-os-x/comment-page-1/)
    - [libuv fight with OS X clock API](https://github.com/joyent/libuv/pull/1325)
-   - [clock_gettime for OS X](http://web.archive.org/web/20100501115556/http://le-depotoir.googlecode.com:80/svn/trunk/misc/clock_gettime_stub.c).
+   - [clock_gettime for OS X](http://web.archive.org/web/20100501115556/http://le-depotoir.googlecode.com:80/svn/trunk/misc/clock_gettime_stub.c)
    - [Mach overview](http://web.eecs.utk.edu/~qcao1/cs560/papers/mach.pdf)
    - [OS X kernel guide lines](https://developer.apple.com/library/content/documentation/Darwin/Conceptual/KernelProgramming/About/About.html)
    - [Mac OS X Internals book](http://www.osxbook.com)
