@@ -1,4 +1,4 @@
-baseURL              = "http://dshil.github.io/"
+baseURL              = "https://dshil.github.io/"
 builddrafts          = false
 canonifyurls         = true
 contentdir           = "content"
