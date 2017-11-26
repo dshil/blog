@@ -10,6 +10,9 @@ author               = "Dmitriy Shilin"
 title                = "Dmitriy Shilin"
 pluralizelisttitles  = false
 
+[permalinks]
+blog  = "blog/:slug/"
+
 [[menu.main]]
 name                 = "Blog"
 weight               = -120
