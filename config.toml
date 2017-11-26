@@ -52,5 +52,4 @@ selfintro            = "Ghost software engineer and Linux lover"
 
 highlightjs          = true
 
-# path to image in static dir e.g img/avatar.png
-avatar               = "img/profile.png"
+avatar               = "images/profile.png"
