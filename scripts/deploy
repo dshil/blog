@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-hugo
+hugo -t cocoa
 cd public && git add -A
 
 msg="rebuilding site `date`"
