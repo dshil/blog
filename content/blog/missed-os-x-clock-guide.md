@@ -11,7 +11,6 @@ draft: false
    * [High resolution time management in Linux](#linux)
    * [Mach Kernel](#mach-kernel)
    * [Mach Clock API](#mach-clock-api)
-   * [Difference between various Mach Clock APIs](#difference-between-various-mach-clock-api)
    * [Deprecated Mach Clock API](#deprecated-mach-clock-api)
    * [Links](#links)
 
@@ -38,8 +37,6 @@ I would like to thank my friends and colleagues:
    - [Victor Gaydov](https://gavv.github.io/about/) and [his project](https://github.com/roc-project/roc),
      that was a reason why this article has appeared and for dozen helpful
      advices how to improve this article.
-   - [Eugene Golishev](https://github.com/eugulixes) for advices how to improve
-     readability.
 
 ## Linux
 
@@ -164,7 +161,7 @@ if (err != KERN_SUCCESS) {
 ```
 
 Mach API also provides a system call similar to `clock_nanosleep`. It is called
-[clock_sleep](https://github.com/opensource-apple/xnu/blob/10.12/osfmk/kern/clock_oldops.c).
+[clock_sleep](https://github.com/apple/darwin-xnu/blob/master/osfmk/kern/clock_oldops.c#L493).
 
 For more details about Mach API I recommend to use the following resources:
 
@@ -212,7 +209,7 @@ double steady_factor = (double) info.numer / info.denom;
 uint64_t now_ns = mach_absolute_time() * steady_factor;
 ```
 
-## Difference between various Mach Clock APIs
+**Mach APIs under the hood**
 
 Let's try to receive current time using both APIs:
 
@@ -220,8 +217,6 @@ Let's try to receive current time using both APIs:
    - `mach_absolute_time`: 55668752378055 ns
 
 Both values belongs to the same time domain.
-
-**Mach APIs under the hood**
 
 * API based on `mach_absolute_time` uses [RDTSC](https://en.wikipedia.org/wiki/Time_Stamp_Counter) underneath.
   You can review [source](https://opensource.apple.com/source/Libc/Libc-320.1.3/i386/mach/mach_absolute_time.c)
