@@ -1,4 +1,58 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "cocoa"
+baseURL              = "dshil.github.io/"
+builddrafts          = false
+canonifyurls         = true
+contentdir           = "content"
+languageCode         = "en-US"
+layoutdir            = "layouts"
+publishdir           = "public"
+theme                = "cocoa"
+author               = "Dmitriy Shilin"
+title                = "Dmitriy Shilin"
+pluralizelisttitles  = false
+
+[[menu.main]]
+name                 = "Blog"
+weight               = -120
+identifier           = "blog"
+url                  = "/blog/"
+
+[[menu.main]]
+name                 = "About"
+weight               = -110
+identifier           = "about"
+url                  = "/about/"
+
+[params]
+
+# how many posts to display on the home page
+latestpostscount     = 5
+
+# whether to display small country flags for available translations
+i18n_flags           = false
+author               = "Dmitriy Shilin"
+
+# add the current unix timestamp in query string for cache busting css assets
+cachebuster          = true
+dateform             = "Jan 2, 2006"
+dateformfull         = "Mon Jan 2 2006 15:04:05 MST"
+email                = "sdadeveloper@gmail.com"
+faviconfile          = "img/leaf.ico"
+github               = "github.com/dshil"
+# px500                = "//500px.com/username"
+lang                 = "en"
+linkedin             = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
+
+# if true, don't show "<x> minutes read" in posts
+noshowreadtime       = false
+
+# appears in the site header when set to a non-empty string
+selfintro            = "Ghost software engineer and Linux lover"
+
+highlightjs          = true
+
+# additional languages not included in the "common" set
+highlightjslanguages = ["go", "c"]
+highlightjsStyle     = "darcula"
+
+# path to image in static dir e.g img/avatar.png
+avatar               = "img/profile.png"
