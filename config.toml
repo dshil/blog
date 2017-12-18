@@ -19,12 +19,6 @@ weight               = -120
 identifier           = "blog"
 url                  = "/blog/"
 
-[[menu.main]]
-name                 = "About"
-weight               = -110
-identifier           = "about"
-url                  = "/about/"
-
 [params]
 
 # how many posts to display on the home page
