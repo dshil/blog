@@ -19,6 +19,18 @@ weight               = -120
 identifier           = "blog"
 url                  = "/blog/"
 
+[[menu.main]]
+name                 = "About"
+weight               = -110
+identifier           = "about"
+url                  = "/about/"
+
+[[menu.main]]
+name                 = "Talks"
+weight               = -100
+identifier           = "talks"
+url                  = "/talks/"
+
 [params]
 
 # how many posts to display on the home page
