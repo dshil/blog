@@ -235,7 +235,7 @@ current time you need 3 system calls:
 
 `host_get_clock_service` and `mach_port_deallocate` usually will be called only
 once. We need to value the cost of `clock_get_time`.
-Using [Benchmarks for time-related operations for OS X and Linux](https://github.com/dshil/playground/tree/master/bench) we can see the difference.
+Using [Benchmarks for time-related operations for OS X and Linux](https://github.com/dshil/tb) we can see the difference.
 
 `mach_absolute_time`:
 
