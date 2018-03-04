@@ -1,5 +1,5 @@
 ---
-title: "Email"
+title: "Communication: back in time"
 date: 2018-03-04T05:56:39+03:00
 draft: false
 ---
@@ -22,10 +22,11 @@ communicate by using emails to send the patches.
 
 You may think that in 21-century email usage seemed obsolete. Let's see on
 this from the other side:
-- No need to instantly reply to the message.
-- The level of distracting is very low.
-- Zero level of multitasking.
-- The mailer definitely will think twice and careful before sending the mail.
+
+   - No need to instantly reply to the message.
+   - The level of distracting is very low.
+   - Zero level of multitasking.
+   - The mailer definitely will think twice and careful before sending the mail.
 
 The last thing is very important because it develops the ability to formulate
 thoughts. Like Richard Feynman said: "You should explain the idea in such way
