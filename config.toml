@@ -12,6 +12,7 @@ pluralizelisttitles  = false
 
 [permalinks]
 blog  = "blog/:slug/"
+notes  = "notes/:slug/"
 
 [[menu.main]]
 name                 = "Blog"
@@ -20,10 +21,10 @@ identifier           = "blog"
 url                  = "/blog/"
 
 [[menu.main]]
-name                 = "About"
+name                 = "Notes"
 weight               = -110
-identifier           = "about"
-url                  = "/about/"
+identifier           = "notes"
+url                  = "/notes/"
 
 [[menu.main]]
 name                 = "Talks"
@@ -54,7 +55,7 @@ linkedin             = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
 noshowreadtime       = false
 
 # appears in the site header when set to a non-empty string
-selfintro            = "Ghost software engineer and Linux lover"
+selfintro            = "Various notes about software development"
 
 highlightjs          = true
 
