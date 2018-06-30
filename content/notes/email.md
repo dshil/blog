@@ -32,4 +32,16 @@ The last thing is very important because it develops the ability to formulate
 thoughts. Like Richard Feynman said: "You should explain the idea in such way
 so it will be understood by the 6 years old child".
 
+Keeping all these disadvantages in mind I've built several daily rules:
+
+* Ask google.
+* Ask a teddy bear. Its known techniques help you to reformulate your thoughts
+  and probably you'll no longer need the initial real meeting.
+* Prepare a plan for the meeting.
+* Reread your plan at least 5 times and make any corrections if needed.
+* Keep meeting as short as possible. Zero meetings are the ideal.
+* If you want to discuss something with a college(s) and this discussion isn't
+  so long (~1-2 minutes) you can simply chat with him. No need to call him for
+  a private conversation.
+
 Happy hacking and please think slow sometimes.
