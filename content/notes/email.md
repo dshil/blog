@@ -32,7 +32,7 @@ The last thing is very important because it develops the ability to formulate
 thoughts. Like Richard Feynman said: "You should explain the idea in such way
 so it will be understood by the 6 years old child".
 
-Keeping all these disadvantages in mind I've built several daily rules:
+Keeping all these disadvantages in mind I've built the following daily rules:
 
 * Ask google.
 * Ask a teddy bear. Its known techniques help you to reformulate your thoughts
