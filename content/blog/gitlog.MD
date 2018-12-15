@@ -109,7 +109,7 @@ these approaches.
 * Procedure of code rereading before merging it allows to fix some typos,
   simplify things, remove debug messages.
 
-## Instead of conclusion:
+## Instead of conclusion
 
 There are a lot of discussions, cargo cults around successful git models.
 I just analyze some approaches from the previous experience of working in
