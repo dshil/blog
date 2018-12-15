@@ -1,5 +1,5 @@
 ---
-title: "git log"
+title: "Git log"
 date: 2018-12-15T07:37:30+03:00
 draft: false
 ---
@@ -33,11 +33,11 @@ rules to keep your git history healthy.
 ## Find your git model
 
 There are a huge amount of ways how you can organize your life with git but
-I'd pick two very simple and commonly used.
+I'll explore two very simple and commonly used.
 
 ### Git only model
 
-* Each team member writes very-informative and understandable commit messages.
+* Each team member writes very informative and understandable commit messages.
 * Each commit may contain some reference to the external discussions: mailing
   lists, bugzilla (optional).
 
@@ -60,7 +60,7 @@ arguments are separated by newlines rather than spaces.
 
 [1]: https://somereference
 
-Reviewed-by:
+Reviewed-by: FooMan
 ```
 
 ### Mixed Model (Git + Bugzilla + Mailing Lists)
@@ -81,8 +81,6 @@ I mostly prefer to use the mixed model. It's very great to see the long
 commit messages with a lot of tech details and interesting things but
 usually it's hard to put all info into one commit message because of
 different discussions in ML (mailing list), issue tracker, etc.
-
-----
 
 ## Not all have to be masters
 
@@ -105,7 +103,7 @@ these approaches.
 ### There are only several masters
 
 * Young developers learn how to write clean and simple code from the more
-  experienced developer.
+  experienced developers.
 * Each commit message takes more time to write.
 * Each changes takes more time before being merged into the main line.
 * Procedure of code rereading before merging it allows to fix some typos,
@@ -114,26 +112,18 @@ these approaches.
 ## Instead of conclusion:
 
 There are a lot of discussions, cargo cults around successful git models.
-I just analyze a little bit both approaches from the previous experience of
-working in different companies and contributing to various open-source
-projects. I enforce that all changes must be reviewed before merging to the
+I just analyze some approaches from the previous experience of working in
+different companies and contributing to various open-source projects.
+I enforce that all changes must be reviewed before merging to the
 main line. But is is my rule and you can be probably very happy without
 this annoying review. Try different approaches and find which of them
-is more suitable in your team.
+is more suitable for your team.
 
 I don't provide the complete template of "good commit message" because
 there are resources that did it for me. I'd highly recommend you to
-read [1] and [2].
+read [Linus rules for commit messages](https://github.com/torvalds/subsurface-for-dirk/blob/a48494d2fbed58c751e9b7e8fbff88582f9b2d02/README#L88) and [Why commit
+message is so important](https://chris.beams.io/posts/git-commit/).
 
 After all, all you have left from the developer is a commit message. And when
 bad days come I hope this message will help you to solve the most annoying
 bug.
-
-## Resources
-
-[1] Linus provides a definition of a good commit message.
-[2] Contains more words and examples about why it is so important in
-  long term.
-
-[1] https://github.com/torvalds/subsurface-for-dirk/blob/a48494d2fbed58c751e9b7e8fbff88582f9b2d02/README#L88
-[2] https://chris.beams.io/posts/git-commit/
