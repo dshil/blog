@@ -12,19 +12,12 @@ pluralizelisttitles  = false
 
 [permalinks]
 blog  = "blog/:slug/"
-notes  = "notes/:slug/"
 
 [[menu.main]]
 name                 = "Blog"
 weight               = -120
 identifier           = "blog"
 url                  = "/blog/"
-
-[[menu.main]]
-name                 = "Notes"
-weight               = -110
-identifier           = "notes"
-url                  = "/notes/"
 
 [[menu.main]]
 name                 = "Talks"
