@@ -39,7 +39,7 @@ draft: false
 
 * Position: Software Engineer (C++)
 * Mainly used: C++11, CLang, Python3, Audio/Video processing
-* Company: https://www.tradingview.com
+* Company: https://www.beamr.com
 * Location: Russia (Saint-Petersburg)
 * Period: November 2018 till Present
 
