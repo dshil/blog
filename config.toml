@@ -25,6 +25,12 @@ weight               = -100
 identifier           = "talks"
 url                  = "/talks/"
 
+[[menu.main]]
+name                 = "CV"
+weight               = -100
+identifier           = "CV"
+url                  = "/cv/"
+
 [params]
 
 # how many posts to display on the home page
@@ -48,7 +54,7 @@ linkedin             = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
 noshowreadtime       = false
 
 # appears in the site header when set to a non-empty string
-selfintro            = "Various notes about software development"
+selfintro            = "Various notes about Software Development"
 
 highlightjs          = true
 
