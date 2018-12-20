@@ -83,7 +83,7 @@ its backend from Java to Go. It was all about pros and cons for building
 REST API, concurrency, memory usage, etc. Cooperation was too short because
 at the same time I’ve decided to take the job offer from TradingView.
 
-### NPOAvrora
+### Avrora Systems
 
 * Position: Software Engineer (System Developer)
 * Company: http://avrorasystems.com/eng/
