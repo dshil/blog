@@ -6,26 +6,25 @@ draft: false
 
 ## Preface
 
-Internet was designed in a such way that almost nobody remember the days when
-there is no internet. People just got used to this phenomenon, like an air but
-also there are some men that remember that days and we should protect them as
-the UNESCO area. This feeling that the internet has been at all times shows
-that it was very well-designed and later - implemented.
+An internet was designed in a such way that almost nobody remembers the days
+when there is no internet. People just got used to this phenomenon, like an air,
+in the same way, there are some people who remember those days and we should
+protect them as the UNESCO area. This feeling that the internet has been at all
+times shows that it was very well-designed and later - implemented.
 
-In that days there wasn't such thing as a revision control system. First of
-them were implemented [not so long ago](https://en.wikipedia.org/wiki/Version_control). As a result modern developers probably
-won't never encounter the difficulties while working with them. By
-difficulties I mean: bad design, very slow, not stable. Probably, some of you
-remember the story of the Linux Kernel community and BeetKeeper usage. For most
-of the developers it was a big pain in the ass. The Kernel was growing very
-fast and BeetKeeper was slowing down roughly at the same speed. One day Linus
-and [some guys from the Linux Kernel](https://en.wikipedia.org/wiki/Git) built
-their own version control system and gave it the great name: git - the stupid
-content tracker which is the standard de facto in our days. Git also was
-designed in a such way that most of the developers don't remember the days when
-there is no Git. Git is treated as a perfect knife that will kill any enemy
-without any problems. For most project it actually is the perfect tool and most
-of the developers won't encounter any problems with it.
+In those days there wasn't such thing as a revision control system.
+[First of them](https://en.wikipedia.org/wiki/Version_control) were implemented  not so long ago. As a result modern developers
+probably have never encountered the difficulties while working with them.
+Probably, some of you remember the story of the Linux Kernel community and
+BeetKeeper usage. For most of the developers it was a big pain in the ass.
+The Kernel was growing very fast and BeetKeeper was slowing down roughly at
+the same speed. One day Linus and [some guys from the Linux Kernel](https://en.wikipedia.org/wiki/Git) built their
+own version control system and gave it the great name: git - the stupid content
+tracker which is the standard de facto in our days. Git also was designed in a
+such way that most of the developers don't remember the days when there is no Git.
+Git is treated as a perfect knife that will kill any enemy without any problems.
+For most projects it is actually the perfect tool to work with and most of the
+developers have never faced any problems with it.
 
 Probably one day you will start working on a very large codebase and realize
 that simple `git diff` or `git status` takes more than 30 seconds and usual
@@ -56,11 +55,11 @@ problem. Let's begin with an environment:
 ### NTFS or EXT4
 
 I am not an expert in the file system domain and can't properly explain why
-there is zero problems with Git working on EXT4 and there is a huge performance
-degradation on NTFS. It doesn't mean that NTFS is worse than EXT4 because it
-depends on the operations and environments. I have problems with Git using
-Cygwin but probably it is not a case. If you are curious about benchmarking
-different FS, the following links may be a good starting point:
+there are zero problems with Git on EXT4 file system and there is a huge
+performance degradation on NTFS. It doesn't mean that NTFS is worse than EXT4
+because it depends on the operations and environments. I have problems with Git
+using Cygwin but probably it is not a case. If you are curious about
+benchmarking different FS, the following links may be a good starting point:
 
 * [Why does Windows still use NTFS? Why not ext4?](https://www.quora.com/Why-does-Windows-still-use-NTFS-Why-not-ext4-the-file-system-for-Linux-since-it-actively-prevents-disk-fragmentation)
 * [Linux 4.7 - Btrfs vs. EXT4 vs. F2FS vs. XFS vs. NTFS Benchmarks](https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.7-FS-5-Way)
@@ -68,9 +67,9 @@ different FS, the following links may be a good starting point:
 
 ## Tuning Time
 
-"Git is slow on Windows" is very popular topic in internet and there are a lot
-of articles describing how to increase the performance of your Git in the
-Windows environment. I will just summarize most important of them.
+"Git is slow on Windows" is a very popular topic in internet and there are a
+lot of articles describing how to increase the performance of your Git in the
+Windows environment. I will just summarize the most important of them.
 
 ### Tuning Git Configuration
 
@@ -113,12 +112,12 @@ following way:
 * No need to clone the repository with the full Git history because it can be
   very huge, e.g., for LibreOffice project, `git rev-list --count HEAD` equals
   to 432192 commits. Specify the number of commits you are interested in
-  by `--depth` option during the clone. But remember that shorter the history
-  then less chance of getting the value from the `git blame` and `git log`.
+  by `--depth` option during the clone. From the other side, the shorter the
+  history, the less chance of getting the value from the `git blame` and `git log`.
 * No need to run `git status`, `git diff` for the top level path of your
   repository. You can specify the only changed directory. As a result you
   should think carefully about splitting your changes into several commits that
-  reduces the scope of the changes per commit.
+  reduce the scope of the changes per commit.
 * No need to run Git command each time you do some changes (I had this habit,
   probably you too), just slow down your development workflow and keep changes
-  as small as possible that allows you to remember the recent activity.
+  as small as possible that allow you to remember the recent activity.
