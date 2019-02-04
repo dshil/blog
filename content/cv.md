@@ -4,8 +4,6 @@ date: 2018-12-20T09:08:25+03:00
 draft: false
 ---
 
-![main_photo](/cv/main_photo.png)
-
 ## General Information
 
 * Live in: Saint-Petersburg
