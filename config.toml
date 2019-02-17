@@ -26,10 +26,10 @@ identifier           = "talks"
 url                  = "/talks/"
 
 [[menu.main]]
-name                 = "CV"
+name                 = "Projects"
 weight               = -100
-identifier           = "CV"
-url                  = "/cv/"
+identifier           = "projects"
+url                  = "/projects/"
 
 [params]
 

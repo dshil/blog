@@ -1,7 +1,7 @@
 ---
 title: CV
 date: 2018-12-20T09:08:25+03:00
-draft: false
+draft: true
 ---
 
 ## General Information
@@ -128,4 +128,4 @@ very clean and well-designed. Hope that we will release 1.0 someday.
 
 * Project: [Web-based terminal emulator](https://github.com/tolstoyevsky/gits)
 * [Contribution profile](https://github.com/tolstoyevsky/gits/commits?author=dshil)
-* Main used: Python
+* Mainly used: Python
