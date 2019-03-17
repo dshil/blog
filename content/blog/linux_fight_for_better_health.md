@@ -10,12 +10,12 @@ For a long time I was working in the office in the front of my lovely
 Dell 24 Monitor but recently I have been starting working more and more in
 front of my laptop. It is MacBook Pro 17 Late 2011, very old guy with Fedora
 on a board. Suddenly I started having more and more headaches. It was sad and I
-decided to go to a doctor. Well, it was interesting, we made a tons of analysis,
+decided to visit a doctor. Well, it was interesting, we made a tons of analysis,
 check eyes, check vessels of the brain, check neck and a lot more and
 surprisingly we did not find anything interesting. Doctors said that I just
-tired and I need to make a break and take some medications. I did it and it
+tired and I need to make a break and take some medications. I did it and but it
 did not help. I was not able to work in front of my laptop longer than 15-20
-minutes. It was a time when the real fight begun.
+minutes. It was a time when the real fight began.
 
 ## Pulse Wave Modulation
 
@@ -34,11 +34,11 @@ sudo intel_reg_read 0xC8254
 
 So, from this result you can get the idea. When you decrease brightness of the
 screen to the minimum level you will be under higher PWM influence. For some
-people it is OK but a little group of people, including me, it will cause the
-eyes tension and headaches. As a result we need to
+people it is OK but for a little group of people, including me, it will cause
+the eyes tension and headaches. As a result we need to
 [eliminate LED screen flicker](http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html) when we work in front of display with a
-brightness other than the maximum (PWM will be eliminated automatically for the
-maximum brightness). You just need to chose the desired PWM frequency:
+brightness which differs from the maximum (PWM will be eliminated automatically
+for the maximum brightness). You just need to chose the desired PWM frequency:
 
 ```sh
 sudo intel_reg_write 0xC8254 0x3d103d1 # 1000Hz in my case
@@ -47,7 +47,7 @@ sudo intel_reg_write 0xC8254 0x3d103d1 # 1000Hz in my case
 Of course, not all of us have the intel GPU on board. PWM usually appears on
 middle or low brightness level. As a result you can set the brightness level to
 the maximum and use [redshift](http://jonls.dk/redshift/) or [iris](https://iristech.co/how-iris-reduces-pwm-flicker-medium/) to adjust the brightness. In the
-reallity these tools do not change the hardware brightness, they adjust the
+reality these tools do not change the hardware brightness, they adjust the
 gamma settings instead. For some people it might work. Personally, I do not
 like this approach because I have even more headaches because of mixing maximum
 brightness + gamma changing.
