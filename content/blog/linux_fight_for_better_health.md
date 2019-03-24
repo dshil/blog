@@ -7,19 +7,19 @@ draft: false
 ## Preface
 
 For a long time I was working in the office in the front of my lovely
-Dell 24 Monitor but recently I have been starting working more and more in
-front of my laptop. It is MacBook Pro 17 Late 2011, very old guy with Fedora
-on a board. Suddenly I started having more and more headaches. It was sad and I
-decided to visit a doctor. Well, it was interesting, we made a tons of analysis,
-check eyes, check vessels of the brain, check neck and a lot more and
-surprisingly we did not find anything interesting. Doctors said that I just
-tired and I need to make a break and take some medications. I did it and but it
-did not help. I was not able to work in front of my laptop longer than 15-20
-minutes. It was a time when the real fight began.
+Dell 24 Monitor but recently I have been starting working more in front of
+my laptop. It is MacBook Pro 17 Late 2011, very old guy with Fedora on a board.
+Suddenly I started having more and more headaches. It was sad and I
+decided to visit a doctor. Well, we made a tons of analysis, check eyes,
+check vessels of the brain, check neck and a lot more and surprisingly we did
+not find anything. Doctors said that I just tired and I need to make a break
+and take some medications. I did it and but it did not help. I was not able to
+work in front of my laptop longer than 15-20 minutes. It was a time when the
+real fight has begun.
 
 ## Pulse Wave Modulation
 
-One day I found an [interesting post](https://www.reddit.com/r/linux4noobs/comments/2ygdpc/eyestrain_problems_while_using_linux/) on Reddit where one guy had the similar
+One day I found a [post](https://www.reddit.com/r/linux4noobs/comments/2ygdpc/eyestrain_problems_while_using_linux/) on Reddit where one guy had the similar
 problem that I had. From this post I got the idea that some people have
 headaches because of PWM (pulse wave modulation) that controls LED backlight.
 Happy owners of the intel GPU card can control this annoying PWM somehow.
@@ -32,10 +32,10 @@ sudo intel_reg_read 0xC8254
 0x0
 ```
 
-So, from this result you can get the idea. When you decrease brightness of the
+From this result you can get the idea. When you decrease brightness of the
 screen to the minimum level you will be under higher PWM influence. For some
 people it is OK but for a little group of people, including me, it will cause
-the eyes tension and headaches. As a result we need to
+the eye stress and headaches. As a result we need to
 [eliminate LED screen flicker](http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html) when we work in front of display with a
 brightness which differs from the maximum (PWM will be eliminated automatically
 for the maximum brightness). You just need to chose the desired PWM frequency:
@@ -87,8 +87,8 @@ grep DPI /var/log/Xorg.0.log
 
 We adjusted the DPI. From the personal view I did not see the huge difference
 but probably my sensitive eyes recognized some changes. The fonts rendering was
-still terrible. After a little bit of googling I found an interesting
-[instruction](https://wiki.manjaro.org/index.php?title=Improve_Font_Rendering) for font rendering. After applying all suggested settings
+still terrible. After a little bit of googling I found an [instruction](https://wiki.manjaro.org/index.php?title=Improve_Font_Rendering)
+for font rendering. After applying all suggested settings
 the fonts rendering became very neat.
 
 ## Conclusion
@@ -104,5 +104,5 @@ front of my laptop without any injuries:
 * Use 100% gamma
 * Use 1000Hz PWM frequency
 
-I still have a little bit of eyes tension and headaches but I think that it is
+I still have a little bit of eye stress and headaches but I think that it is
 a recovery period.
