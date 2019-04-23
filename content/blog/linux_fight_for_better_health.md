@@ -1,6 +1,6 @@
 ---
 title: "Linux: fight for better health"
-date: 2019-03-15T09:53:26+03:00
+date: 2019-03-16T09:53:26+03:00
 draft: false
 ---
 
