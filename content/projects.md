@@ -14,15 +14,8 @@ draft: false
 ### ROC
 
 * [Real-time audio streaming over unreliable network](https://github.com/roc-project/roc)
-* [Contribution
-  profile](https://github.com/roc-project/roc/commits?author=dshil)
+* [Contribution profile](https://github.com/roc-project/roc/commits?author=dshil)
 * Mainly used: C++
-
-I was involved in this great project by my friend [Victor Gaydov](https://gavv.github.io/about/), who is
-very passioned and talented developer. We met during the work at TradingView.
-While I write these lines the project isn't released yet for some difficulties
-due to the lack of time and so on. Anyway if you look at the source code it is
-very clean and well-designed. Hope that we will release 1.0 someday.
 
 ### GITS
 
