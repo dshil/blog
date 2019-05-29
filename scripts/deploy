@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-msg="rebuilding site `date`"
+msg="build site: `date`"
 
 hugo -t cocoa
 
 pushd public
-git add -A
+    git add -A
 
-if [ $# -eq 1 ]
-  then msg="$1"
-fi
+    if [ $# -eq 1 ]
+      then msg="$1"
+    fi
 
-git commit -m "$msg"
-git push origin master
-
-popd
+    git commit -m "$msg"
+    git push origin master
+popd # public
