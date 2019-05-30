@@ -8,7 +8,6 @@ draft: true
 
 * Live in: Saint-Petersburg
 * Citizenship: Russia
-* Work permit: Russia
 * Github: https://github.com/dshil
 * Contact: dshil@fastmail.com
 * Work experience: 4+ years
@@ -16,12 +15,6 @@ draft: true
 ----
 
 ## Education
-
-### Master program
-
-* University: Innopolis University
-* Years of study: July 2015 - December 2015 (Not finished)
-* Department: Software Engineering
 
 ### Bachelor program
 
