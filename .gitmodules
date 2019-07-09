@@ -3,4 +3,4 @@
 	url = git@github.com:dshil/dshil.github.io.git
 [submodule "themes/cocoa"]
 	path = themes/cocoa
-	url = https://github.com/nishanths/cocoa-hugo-theme
+	url = git@github.com:nishanths/cocoa-hugo-theme.git

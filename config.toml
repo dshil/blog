@@ -1,3 +1,5 @@
+# https://gohugo.io/getting-started/configuration/
+
 baseURL              = "https://dshil.github.io/"
 builddrafts          = false
 canonifyurls         = true
@@ -5,57 +7,53 @@ contentdir           = "content"
 languageCode         = "en-US"
 layoutdir            = "layouts"
 publishdir           = "public"
-theme                = "cocoa"
 author               = "Dmitriy Shilin"
+theme                = "cocoa"
 title                = "Dmitriy Shilin"
 pluralizelisttitles  = false
 
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
 [permalinks]
-blog  = "blog/:slug/"
+  blog  = "blog/:slug/"
 
 [[menu.main]]
-name                 = "Blog"
-weight               = -120
-identifier           = "blog"
-url                  = "/blog/"
+  name                 = "Blog"
+  weight               = -120
+  identifier           = "blog"
+  url                  = "/blog/"
 
 [[menu.main]]
-name                 = "Talks"
-weight               = -100
-identifier           = "talks"
-url                  = "/talks/"
+  name                 = "Talks"
+  weight               = -100
+  identifier           = "talks"
+  url                  = "/talks/"
 
 [[menu.main]]
-name                 = "Projects"
-weight               = -100
-identifier           = "projects"
-url                  = "/projects/"
+  name                 = "Projects"
+  weight               = -100
+  identifier           = "projects"
+  url                  = "/projects/"
 
 [params]
+  include_rss          = false
+  latestpostscount     = 5
 
-# how many posts to display on the home page
-latestpostscount     = 5
+  i18n_flags           = false
+  author               = "Dmitriy Shilin"
+  copyright            = "Dmitriy Shilin"
 
-# whether to display small country flags for available translations
-i18n_flags           = false
-author               = "Dmitriy Shilin"
-copyright            = "Dmitriy Shilin"
+  cachebuster          = true
+  dateform             = "Jan 2, 2006"
+  dateformfull         = "Mon Jan 2 2006 15:04:05 MST"
+  email                = "dshil@fastmail.com"
+  github               = "http://github.com/dshil"
+  lang                 = "en"
+  linkedin             = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
 
-# add the current unix timestamp in query string for cache busting css assets
-cachebuster          = true
-dateform             = "Jan 2, 2006"
-dateformfull         = "Mon Jan 2 2006 15:04:05 MST"
-email                = "dshil@fastmail.com"
-github               = "http://github.com/dshil"
-lang                 = "en"
-linkedin             = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
+  noshowreadtime       = false
 
-# if true, don't show "<x> minutes read" in posts
-noshowreadtime       = false
+  selfintro    = "Various notes about Software Development"
 
-# appears in the site header when set to a non-empty string
-selfintro            = "Various notes about Software Development"
-
-highlightjs          = true
-
-avatar               = "images/profile.png"
+  highlightjs  = true
+  avatar       = "images/profile.png"
