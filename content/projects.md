@@ -4,17 +4,17 @@ date: 2019-02-17T06:27:48+03:00
 draft: false
 ---
 
+## ROC
+
+* [Real-time audio streaming over unreliable network](https://github.com/roc-project/roc)
+* [Contribution profile](https://github.com/roc-project/roc/commits?author=dshil)
+* Mainly used: C++
+
 ## LibreOffice
 
 * [LibreOffice](https://www.libreoffice.org/)
 * [Contribution
   profile](https://gerrit.libreoffice.org/#/q/dshil%2540fastmail.com)
-* Mainly used: C++
-
-## ROC
-
-* [Real-time audio streaming over unreliable network](https://github.com/roc-project/roc)
-* [Contribution profile](https://github.com/roc-project/roc/commits?author=dshil)
 * Mainly used: C++
 
 ## GITS
