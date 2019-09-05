@@ -28,7 +28,7 @@ quickly. Happy owners of the Intel GPU card [can control](https://wiki.archlinux
 For the first time, I checked the current PWM frequency and it was 0x0:
 
 ```sh
-sudo intel_reg_read 0xC8254
+sudo intel_reg read 0xC8254
 0x0
 ```
 
@@ -41,7 +41,7 @@ maximum (PWM will be eliminated automatically for the maximum brightness).
 You just need to choose the desired PWM frequency:
 
 ```sh
-sudo intel_reg_write 0xC8254 0x3d103d1 # 1000Hz in my case
+sudo intel_reg write 0xC8254 0x3d103d1 # 1000Hz in my case
 ```
 
 Of course, not all of us have the Intel GPU on board. PWM usually appears on
