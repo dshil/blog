@@ -76,7 +76,7 @@ Windows environment. I will just summarize the most important of them.
 There are 3 magic options that should be turned on to solve all your problems,
 but before tuning any options ensure that you really have any problems:
 
-```sh
+```
 git config --global core.preloadindex true
 git config --global core.fscache true
 git config --global gc.auto 256

@@ -27,7 +27,7 @@ quickly. Happy owners of the Intel GPU card [can control](https://wiki.archlinux
 
 For the first time, I checked the current PWM frequency and it was 0x0:
 
-```sh
+```
 sudo intel_reg read 0xC8254
 0x0
 ```
@@ -40,7 +40,7 @@ when we work in front of a display with a brightness which differs from the
 maximum (PWM will be eliminated automatically for the maximum brightness).
 You just need to choose the desired PWM frequency:
 
-```sh
+```
 sudo intel_reg write 0xC8254 0x3d103d1 # 1000Hz in my case
 ```
 
@@ -70,7 +70,7 @@ As a result, we can't simply use the same DPI value just because it is somewhere
 near our true DPI. There is a good [instruction](https://askubuntu.com/questions/197828/how-to-find-and-change-the-screen-dpi) for DPI calculation. After doing short math I got the value 110 for my display parameters.
 After all, you need to ensure that the following commands produce the same DPI:
 
-```sh
+```
 xdpyinfo | grep dots
 # resolution:    110x110 dots per inch
 
