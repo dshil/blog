@@ -2,7 +2,7 @@
 
 msg="build site: `date`"
 
-hugo -t cocoa
+hugo -t cactus
 
 pushd public
     git add -A

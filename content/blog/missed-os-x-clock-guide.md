@@ -94,70 +94,70 @@ By exploring [man pages in XNU repository](https://github.com/apple/darwin-xnu/t
 Let's explore what we can do with it:
 
 ```c
-#include <mach/mach.h>      /* host_get_clock_service */
-#include <mach/clock.h>     /* clock_get_time */
-#include <mach/mach_error.h> /* error handling */
+    #include <mach/mach.h>      /* host_get_clock_service */
+    #include <mach/clock.h>     /* clock_get_time */
+    #include <mach/mach_error.h> /* error handling */
 
-kern_return_t err = KERN_SUCCESS;
-clock_serv_t host_clock;
+    kern_return_t err = KERN_SUCCESS;
+    clock_serv_t host_clock;
 
-// mach/clock_types.h
-//
-// kern_return_t
-// host_get_clock_service(
-//     host_t			host,
-//     clock_id_t		clock_id,
-//     clock_t			*clock)
-//
-// Reserved clock id values for default clocks.
-//
-// #define SYSTEM_CLOCK	    	0
-// #define CALENDAR_CLOCK		1
-// #define REALTIME_CLOCK		0
-//
-// Where `clock_id` is the identification of the desired kernel clock with
-// possible values:
-//
-//    - REALTIME_CLOCK stands for a time since a boot time. It has the same
-//      semantic as CLOCK_MONOTONIC.
-//
-//    - BATTERY_CLOCK - (typically) low resolution clock that survives
-//      power failures or service outages.
-//
-//    - HIGHRES_CLOCK - a high resolution clock.
-//
-// This function returns a send right to a kernel clock's service port.
-err = host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &host_clock);
-if (err != KERN_SUCCESS) {
-    mach_error("host_get_clock_service: ", err);
-    exit(EXIT_FAILURE);
-}
+    // mach/clock_types.h
+    //
+    // kern_return_t
+    // host_get_clock_service(
+    //     host_t			host,
+    //     clock_id_t		clock_id,
+    //     clock_t			*clock)
+    //
+    // Reserved clock id values for default clocks.
+    //
+    // #define SYSTEM_CLOCK	    	0
+    // #define CALENDAR_CLOCK		1
+    // #define REALTIME_CLOCK		0
+    //
+    // Where `clock_id` is the identification of the desired kernel clock with
+    // possible values:
+    //
+    //    - REALTIME_CLOCK stands for a time since a boot time. It has the same
+    //      semantic as CLOCK_MONOTONIC.
+    //
+    //    - BATTERY_CLOCK - (typically) low resolution clock that survives
+    //      power failures or service outages.
+    //
+    //    - HIGHRES_CLOCK - a high resolution clock.
+    //
+    // This function returns a send right to a kernel clock's service port.
+    err = host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &host_clock);
+    if (err != KERN_SUCCESS) {
+        mach_error("host_get_clock_service: ", err);
+        exit(EXIT_FAILURE);
+    }
 
-// struct mach_timespec {
-//    unsigned int  tv_sec;         /* seconds */
-//    clock_res_t   tv_nsec;    /* nanoseconds */
-// };
-// typedef struct mach_timespec mach_timespec_t;
-//
-// As you can see, mach_timespec_t is the same as timespec in Linux.
-mach_timespec_t now;
+    // struct mach_timespec {
+    //    unsigned int  tv_sec;         /* seconds */
+    //    clock_res_t   tv_nsec;    /* nanoseconds */
+    // };
+    // typedef struct mach_timespec mach_timespec_t;
+    //
+    // As you can see, mach_timespec_t is the same as timespec in Linux.
+    mach_timespec_t now;
 
-err = clock_get_time(host_clock, &now);
-if (err != KERN_SUCCESS) {
-    mach_error("clock_get_time: ", err);
-    exit(EXIT_FAILURE);
-}
+    err = clock_get_time(host_clock, &now);
+    if (err != KERN_SUCCESS) {
+        mach_error("clock_get_time: ", err);
+        exit(EXIT_FAILURE);
+    }
 
-// We should deallocate the port returned by host_get_clock_service,
-// because we no longer need it.
-//
-// You should be careful with mach ports allocation and deallocation,
-// because it is usually can cause the ports leak problem.
-err = mach_port_deallocate(mach_task_self(), host_clock);
-if (err != KERN_SUCCESS) {
-    mach_error("mach_port_deallocate: ", err);
-    exit(EXIT_FAILURE);
-}
+    // We should deallocate the port returned by host_get_clock_service,
+    // because we no longer need it.
+    //
+    // You should be careful with mach ports allocation and deallocation,
+    // because it is usually can cause the ports leak problem.
+    err = mach_port_deallocate(mach_task_self(), host_clock);
+    if (err != KERN_SUCCESS) {
+        mach_error("mach_port_deallocate: ", err);
+        exit(EXIT_FAILURE);
+    }
 ```
 
 Mach API also provides a system call similar to `clock_nanosleep`. It is called
@@ -193,20 +193,19 @@ nanoseconds.
 Example of receiving current time in nanoseconds using `mach_absolute_time`:
 
 ```c
+    #include <mach/mach_time.h> /* mach_absolute_time */
 
-#include <mach/mach_time.h> /* mach_absolute_time */
+    mach_timebase_info_data_t info;
 
-mach_timebase_info_data_t info;
+    kern_return_t ret = mach_timebase_info(&info);
+    if (ret != KERN_SUCCESS) {
+        // Some kind of disaster...
+    }
 
-kern_return_t ret = mach_timebase_info(&info);
-if (ret != KERN_SUCCESS) {
-    // Some kind of disaster...
-}
+    // You should cache this value to avoid calculating it each time.
+    double steady_factor = (double) info.numer / info.denom;
 
-// You should cache this value to avoid calculating it each time.
-double steady_factor = (double) info.numer / info.denom;
-
-uint64_t now_ns = mach_absolute_time() * steady_factor;
+    uint64_t now_ns = mach_absolute_time() * steady_factor;
 ```
 
 **Mach APIs under the hood**
