@@ -2,6 +2,7 @@
 title: "Git log"
 date: 2018-12-15T07:37:30+03:00
 draft: false
+comments: true
 ---
 
 I always do `git log` and explore what changes were made by other developers.

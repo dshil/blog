@@ -2,6 +2,7 @@
 title: "Missed OS X Clock Guide"
 date: 2017-11-26T08:03:19+03:00
 draft: false
+comments: true
 ---
 
 **Table of contents**

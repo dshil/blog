@@ -2,6 +2,7 @@
 title: "Fight for better health. Part 1"
 date: 2019-03-16T09:53:26+03:00
 draft: false
+comments: true
 ---
 
 ## Preface

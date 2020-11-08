@@ -10,12 +10,7 @@ publishdir           = "public"
 author               = "Dmitriy Shilin"
 theme                = "cactus"
 title                = "Dmitriy Shilin"
-pluralizelisttitles  = false
-
-disableKinds = ["taxonomy", "taxonomyTerm"]
-
-[permalinks]
-  blog  = "blog/:slug/"
+disqusShortname      = "dshilblog"
 
 [[menu.main]]
   name                 = "Home"
@@ -33,6 +28,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   url                  = "/talks/"
 
 [params]
+ [params.comments]
+    enabled = true
+
   colortheme = "white"
 
   mainSection = "blog"
@@ -42,13 +40,14 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   projectsUrl = "https://github.com/dshil"
 
   showAllPostsOnHomePage = false
-  postsOnHomePage = 7
+  postsOnHomePage = 6
 
   copyright            = "Dmitriy Shilin"
 
+  tagsOverview = true
+
   cachebuster          = true
-  dateform             = "Jan 2, 2006"
-  dateformfull         = "Mon Jan 2 2006 15:04:05 MST"
+  dateFormat           = "Jan 2, 2006"
   lang                 = "en"
 
 [[params.social]]

@@ -5,4 +5,3 @@ draft: false
 ---
 
 * [Go in TradingView (Rus)](https://www.youtube.com/watch?v=-xvqZu3lZGg)
-

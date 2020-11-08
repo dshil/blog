@@ -2,6 +2,7 @@
 title: "Git: tuning performance on Windows"
 date: 2018-12-30T15:13:34+03:00
 draft: false
+comments: true
 ---
 
 ## Preface
