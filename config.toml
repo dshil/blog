@@ -28,10 +28,9 @@ disqusShortname      = "dshilblog"
   url                  = "/talks/"
 
 [params]
- [params.comments]
-    enabled = true
-
   colortheme = "white"
+  logo = "images/profile.png"
+  icon = "images/icon.ico"
 
   mainSection = "blog"
   description = "Various notes about Software Development"
@@ -50,14 +49,18 @@ disqusShortname      = "dshilblog"
   dateFormat           = "Jan 2, 2006"
   lang                 = "en"
 
-[[params.social]]
-  name = "github"
-  link = "https://github.com/dshil"
+  [params.comments]
+    enabled = true
+    engine = "disqus"
 
-[[params.social]]
-  name = "email"
-  link = "dsh.public@fastmail.com"
+  [[params.social]]
+    name = "github"
+    link = "https://github.com/dshil"
 
-[[params.social]]
-  name = "linkedin"
-  link = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
+  [[params.social]]
+    name = "email"
+    link = "dsh.public@fastmail.com"
+
+  [[params.social]]
+    name = "linkedin"
+    link = "https://www.linkedin.com/in/dmitriy-shilin-10032a8b"
