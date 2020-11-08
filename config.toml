@@ -11,6 +11,7 @@ author               = "Dmitriy Shilin"
 theme                = "cactus"
 title                = "Dmitriy Shilin"
 disqusShortname      = "dshilblog"
+googleAnalytics      = "UA-182319870-1"
 
 [[menu.main]]
   name                 = "Home"
@@ -48,6 +49,8 @@ disqusShortname      = "dshilblog"
   cachebuster          = true
   dateFormat           = "Jan 2, 2006"
   lang                 = "en"
+
+  googleAnalyticsAsync = true
 
   [params.comments]
     enabled = true
