@@ -5,7 +5,7 @@ draft: false
 comments: true
 ---
 
-I wrote an [article](https://dshil.github.io/blog/fight-for-better-health/) about strange headaches that I had. I made an assumption that it was [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation). So, I had decided to overcome this issue. My plan was the following:
+I wrote an [article](https://dshil.github.io/blog/fight_for_better_health/) about strange headaches that I had. I made an assumption that it was [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation). So, I had decided to overcome this issue. My plan was the following:
 
 * Buy a new laptop
 * Setup all [PWM related settings](https://wiki.archlinux.org/index.php/Backlight)
