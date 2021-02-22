@@ -3,7 +3,6 @@ title: "Fight for better health. Part 2"
 date: 2019-08-02T12:47:46+03:00
 draft: false
 comments: true
-category: tech
 ---
 
 I wrote an [article](https://dshil.github.io/blog/fight-for-better-health/) about strange headaches that I had. I made an assumption that it was [PWM](https://en.wikipedia.org/wiki/Pulse-width_modulation). So, I had decided to overcome this issue. My plan was the following:
